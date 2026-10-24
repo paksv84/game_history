@@ -3,44 +3,115 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Замени этот заголовок</title>
-<style>
-  :root { --bg: #fbfbfa; --fg: #1a1a18; --dim: #6b6b66; --line: #e4e4e0; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg: #16161a; --fg: #f0f0ee; --dim: #9a9a95; --line: #2e2e34; }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 48px 16px; background: var(--bg); color: var(--fg);
-    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: flex; justify-content: center;
-  }
-  main { max-width: 34rem; width: 100%; }
-  h1 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 .75rem; }
-  p { margin: 0 0 1rem; }
-  .dim { color: var(--dim); }
-  .box { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-top: 28px; }
-  code { background: var(--line); padding: .1em .35em; border-radius: 4px; font-size: .9em; }
-</style>
+<title>История видеоигр</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="fon" aria-hidden="true">
+  <div style="background-image: url(img/01-invader.svg); animation-delay: 0s"></div>
+  <div style="background-image: url(img/02-ghost.svg); animation-delay: 5s"></div>
+  <div style="background-image: url(img/03-pacman.svg); animation-delay: 10s"></div>
+  <div style="background-image: url(img/04-heart.svg); animation-delay: 15s"></div>
+  <div style="background-image: url(img/05-mushroom.svg); animation-delay: 20s"></div>
+  <div style="background-image: url(img/06-ship.svg); animation-delay: 25s"></div>
+  <div style="background-image: url(img/07-sword.svg); animation-delay: 30s"></div>
+  <div style="background-image: url(img/08-gamepad.svg); animation-delay: 35s"></div>
+  <div style="background-image: url(img/09-coin.svg); animation-delay: 40s"></div>
+  <div style="background-image: url(img/10-tetris.svg); animation-delay: 45s"></div>
+</div>
+
 <main>
 
-  <h1>Страница работает</h1>
+  <h1>История видеоигр</h1>
+  <p class="dim">Как развивались видеоигры и как вместе с ними развивались технологии.</p>
 
-  <p>Если ты это читаешь в интернете, а не у себя на компьютере, — значит весь путь уже собран:
-  репозиторий есть, страница опубликована, ссылку можно кинуть другу.</p>
+  <div class="karusel">
+    <button class="strelka" id="nazad" aria-label="Предыдущая карточка">‹</button>
+    <div class="okno">
+      <div class="lenta" id="lenta">
 
-  <p class="dim">Это всё, что здесь должно быть. Содержимое придумаешь ты, а сделает ИИ.</p>
+        <a class="card" href="tehnologii.html">
+      <h2>Технологии</h2>
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="30" y="30" width="60" height="60" rx="4" fill="none" stroke="#00f0ff" stroke-width="3"/>
+        <rect x="45" y="45" width="30" height="30" fill="#ff2bd6"/>
+        <path d="M40 30V15M60 30V15M80 30V15M40 90v15M60 90v15M80 90v15M30 40H15M30 60H15M30 80H15M90 40h15M90 60h15M90 80h15" stroke="#00f0ff" stroke-width="3"/>
+      </svg>
+      <p>Здесь вы узнаете, как видеоигры влияли на технологии в целом.</p>
+    </a>
 
-  <div class="box">
-    <p><strong>Твой следующий ход.</strong></p>
-    <p>Открой <code>zadanie-1.md</code> и напиши, какую страницу ты хочешь — <strong>до того</strong>, как попросишь ИИ.
-    Потом попроси. Потом запусти <code>./check.sh</code>.</p>
-    <p class="dim">Проверка сейчас краснеет на заголовке этой страницы: он так и называется
-    «Замени этот заголовок». Это нарочно.</p>
+        <a class="card" href="istoriya.html">
+      <h2>История</h2>
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="15" y="40" width="90" height="45" rx="20" fill="none" stroke="#00f0ff" stroke-width="3"/>
+        <path d="M35 55v15M27 62h16" stroke="#ff2bd6" stroke-width="4"/>
+        <circle cx="80" cy="57" r="5" fill="#ff2bd6"/>
+        <circle cx="90" cy="67" r="5" fill="#ff2bd6"/>
+      </svg>
+      <p>Здесь вы узнаете, как видеоигры появились и менялись по годам.</p>
+    </a>
+
+        <a class="card" href="lyudi.html">
+      <h2>Важные люди</h2>
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="42" r="18" fill="none" stroke="#00f0ff" stroke-width="3"/>
+        <path d="M25 105c0-20 15-35 35-35s35 15 35 35" fill="none" stroke="#ff2bd6" stroke-width="3"/>
+      </svg>
+      <p>Здесь вы узнаете о людях, которые создали самые известные игры.</p>
+    </a>
+
+      </div>
+    </div>
+    <button class="strelka" id="vpered" aria-label="Следующая карточка">›</button>
   </div>
 
+  <section class="znali">
+    <h2>А вы знали?</h2>
+
+    <div class="fakt">
+      <h3>Тетрис и битва за права</h3>
+      <p>Алексей Пажитнов придумал Тетрис в 1984 году в Москве, но права на игру принадлежали государству.
+      Сразу несколько компаний из разных стран тайно спорили, кто будет продавать игру, и в итоге победила Nintendo.
+      Сам Пажитнов начал получать деньги за свою игру только в 1996 году — через 12 лет.</p>
+    </div>
+
+    <div class="fakt">
+      <h3>Игру закопали в пустыне</h3>
+      <p>В 1982 году игру E.T. для приставки Atari сделали всего за пять недель. Она получилась такой плохой,
+      что миллионы картриджей не продались, и их закопали на свалке в пустыне в Нью-Мексико.
+      В 2014 году эту свалку раскопали — и картриджи действительно нашлись.</p>
+    </div>
+
+    <div class="fakt">
+      <h3>Разработчики, которых не указывали</h3>
+      <p>В Atari не писали имена авторов игр. В 1979 году четыре программиста обиделись, ушли и основали Activision —
+      первую компанию, которая делала игры для чужих приставок. А Уоррен Робинетт тайно спрятал своё имя
+      в игре Adventure — так появилась первая «пасхалка».</p>
+    </div>
+
+    <div class="fakt">
+      <h3>Игроки помогли учёным</h3>
+      <p>В игре Foldit люди складывают белки, как головоломку. В 2011 году игроки за десять дней разгадали
+      форму белка вируса, над которой учёные бились 15 лет. Это помогает искать новые лекарства.</p>
+    </div>
+  </section>
+
 </main>
+
+<script>
+  // Карусель: стрелки сдвигают ленту карточек на одну, по кругу
+  const lenta = document.getElementById('lenta');
+  const vsego = lenta.children.length;
+  let nomer = 0;
+
+  function pokazat(n) {
+    nomer = (n + vsego) % vsego;
+    lenta.style.transform = 'translateX(' + (-nomer * 100) + '%)';
+  }
+
+  document.getElementById('nazad').onclick = () => pokazat(nomer - 1);
+  document.getElementById('vpered').onclick = () => pokazat(nomer + 1);
+</script>
 </body>
 </html>
