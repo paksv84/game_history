@@ -52,3 +52,12 @@ a { color: var(--cyan); }
 .fakt { background: var(--card); border-left: 4px solid var(--cyan); border-radius: 8px; padding: 16px 18px; margin-top: 16px; }
 .fakt h3 { margin: 0 0 8px; color: var(--cyan); }
 .fakt p { margin: 0; }
+
+/* Разделы на страницах тем: картинка слева, текст справа */
+.razdel { display: flex; gap: 20px; align-items: flex-start; background: var(--card); border-radius: 10px; padding: 18px; margin-top: 20px; }
+.razdel img { flex: none; width: 96px; height: 96px; }
+.razdel h2 { margin-top: 0; }
+.razdel p { margin: 0; }
+@media (max-width: 600px) {
+  .razdel { flex-direction: column; }
+}
