@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тайны Третьяковской галереи</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+
+  <h1>Тайны Третьяковской галереи</h1>
+  <p class="dim">Записки о знаменитых картинах: кто их написал, как и что случилось, пока их создавали.</p>
+
+  <div class="karusel">
+    <button class="strelka" id="nazad" aria-label="Предыдущий свиток">‹</button>
+    <div class="okno">
+      <div class="lenta" id="lenta">
+
+        <div class="svitok">
+          <div class="valik"></div>
+          <div class="list">
+            <h2><a href="tehnika.html">Технология рисования</a></h2>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Archip_Iwanowitsch_Kuindshi_005.jpg/960px-Archip_Iwanowitsch_Kuindshi_005.jpg" alt="Архип Куинджи, «Берёзовая роща»">
+            <p>Здесь вы узнаете, какими приёмами художники добивались света, воздуха и объёма.</p>
+            <button class="razvernut" aria-expanded="false">Развернуть свиток</button>
+            <div class="razvorot">
+              <div><div class="tekst">
+                <p>Почему у Куинджи берёзы будто светятся, зачем Левитан писал прямо на улице,
+                а Врубель клал краску ножом. Шесть приёмов — от гладкой академической живописи до мазков, похожих на мозаику.</p>
+                <p><a href="tehnika.html">Читать дальше →</a></p>
+              </div></div>
+            </div>
+          </div>
+          <div class="valik"></div>
+        </div>
+
+        <div class="svitok">
+          <div class="valik"></div>
+          <div class="list">
+            <h2><a href="osobennosti.html">Особенности</a></h2>
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Shishkin%2C_Ivan_-_Morning_in_a_Pine_Forest.jpg/960px-Shishkin%2C_Ivan_-_Morning_in_a_Pine_Forest.jpg" alt="Иван Шишкин и Константин Савицкий, «Утро в сосновом лесу»">
+            <p>Здесь вы узнаете истории создания картин: кто позировал, что спрятано и что с ними случилось.</p>
+            <button class="razvernut" aria-expanded="false">Развернуть свиток</button>
+            <div class="razvorot">
+              <div><div class="tekst">
+                <p>Кто на самом деле нарисовал медведей у Шишкина, почему картину Репина запрещали показывать
+                и кто такая «Неизвестная» Крамского. Восемь историй о знаменитых полотнах.</p>
+                <p><a href="osobennosti.html">Читать дальше →</a></p>
+              </div></div>
+            </div>
+          </div>
+          <div class="valik"></div>
+        </div>
+
+        <div class="svitok">
+          <div class="valik"></div>
+          <div class="list">
+            <h2><a href="hudozhniki.html">Художники</a></h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Surikov_Avtoportret_1913.jpg" alt="Василий Суриков, автопортрет">
+            <p>Здесь вы узнаете о людях, которые написали самые известные картины галереи.</p>
+            <button class="razvernut" aria-expanded="false">Развернуть свиток</button>
+            <div class="razvorot">
+              <div><div class="tekst">
+                <p>Шишкин, Репин, Васнецов, Суриков, Левитан, Серов, Крамской и Врубель:
+                откуда они родом, чем прославились и что в их жизни было необычного.</p>
+                <p><a href="hudozhniki.html">Читать дальше →</a></p>
+              </div></div>
+            </div>
+          </div>
+          <div class="valik"></div>
+        </div>
+
+      </div>
+    </div>
+    <button class="strelka" id="vpered" aria-label="Следующий свиток">›</button>
+  </div>
+
+</main>
+
+<!-- Паучок, нарисованный «чернилами»: бегает по краю экрана и не мешает нажимать -->
+<div class="pauk-pole" aria-hidden="true">
+  <svg class="pauk" viewBox="0 0 40 40">
+    <g fill="none" stroke="#3b2a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g class="lapki">
+        <path d="M15 17 L7 11 L5 4"/>
+        <path d="M15 25 L6 27 L3 34"/>
+        <path d="M25 21 L35 19 L39 15"/>
+        <path d="M24 29 L31 33 L33 39"/>
+      </g>
+      <g class="lapki vtorye">
+        <path d="M15 21 L5 19 L1 15"/>
+        <path d="M16 29 L9 33 L7 39"/>
+        <path d="M25 17 L33 11 L35 4"/>
+        <path d="M25 25 L34 27 L37 34"/>
+      </g>
+    </g>
+    <circle cx="20" cy="13" r="4" fill="#3b2a1a"/>
+    <ellipse cx="20" cy="24" rx="6" ry="8" fill="#3b2a1a"/>
+  </svg>
+</div>
+
+<script src="effekty.js"></script>
+<script src="pauk.js"></script>
+<script>
+  // Свитки: кнопка плавно разворачивает и сворачивает свиток
+  document.querySelectorAll('.svitok').forEach(svitok => {
+    const knopka = svitok.querySelector('.razvernut');
+    knopka.onclick = () => {
+      const otkryt = svitok.classList.toggle('otkryt');
+      knopka.textContent = otkryt ? 'Свернуть свиток' : 'Развернуть свиток';
+      knopka.setAttribute('aria-expanded', otkryt);
+    };
+  });
+
+  // Карусель: стрелки сдвигают ленту свитков на один, по кругу
+  const lenta = document.getElementById('lenta');
+  const vsego = lenta.children.length;
+  let nomer = 0;
+
+  function pokazat(n) {
+    nomer = (n + vsego) % vsego;
+    lenta.style.transform = 'translateX(' + (-nomer * 100) + '%)';
+  }
+
+  document.getElementById('nazad').onclick = () => pokazat(nomer - 1);
+  document.getElementById('vpered').onclick = () => pokazat(nomer + 1);
+</script>
+</body>
+</html>

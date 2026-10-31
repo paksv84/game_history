@@ -1,0 +1,111 @@
+/* Стиль старинных записей: пергамент, коричневые чернила, рукописные заголовки */
+:root { --bg: #e9d8b0; --paper: #f4e7c5; --ink: #3b2a1a; --dim: #6e5638; --red: #8b2e1a; --wood: #7a5230; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 40px 16px; color: var(--ink);
+  background: radial-gradient(circle at center, #f2e3bd 0%, var(--bg) 60%, #cdb27c 100%) fixed;
+  font: 17px/1.6 Georgia, "Times New Roman", serif;
+}
+main { max-width: 60rem; margin: 0 auto; }
+h1, h2, h3 { font-family: "Marck Script", Georgia, serif; font-weight: normal; }
+h1 { font-size: 2.6rem; line-height: 1.2; margin: 0 0 .5rem; color: var(--red); }
+h2 { font-size: 2rem; color: var(--red); margin: 1.5rem 0 .5rem; }
+p { margin: 0 0 1rem; }
+.dim { color: var(--dim); font-style: italic; }
+a { color: var(--red); }
+img { max-width: 100%; }
+
+/* Карусель свитков */
+.karusel { display: flex; align-items: center; gap: 12px; margin-top: 28px; }
+.okno { overflow: hidden; flex: 1; }
+.lenta { display: flex; align-items: flex-start; transition: transform .6s ease; }
+.strelka {
+  flex: none; width: 48px; height: 48px; font-size: 1.75rem; cursor: pointer;
+  background: var(--paper); color: var(--wood); border: 2px solid var(--wood); border-radius: 50%;
+}
+.strelka:hover { color: var(--red); border-color: var(--red); }
+
+/* Свиток: пергамент между двумя деревянными валиками */
+.svitok { flex: 0 0 100%; padding: 0 8px; }
+.valik { height: 22px; border-radius: 11px; background: linear-gradient(#a8784a, var(--wood) 50%, #4a3018); }
+.list {
+  background: var(--paper); margin: 0 14px; padding: 20px 24px;
+  border-left: 1px solid #c9ad78; border-right: 1px solid #c9ad78;
+  box-shadow: inset 0 0 30px rgba(110, 80, 40, .35);
+}
+.list h2 { margin: 0 0 12px; font-size: 2.4rem; text-align: center; }
+.list h2 a { text-decoration: none; }
+.list h2 a:hover { text-decoration: underline; }
+.list > img { display: block; width: 100%; height: 260px; object-fit: cover; border: 4px solid var(--wood); margin-bottom: 12px; }
+.list > p { text-align: center; color: var(--dim); font-style: italic; }
+
+/* Разворачивание свитка: строка сетки плавно растёт от 0 до полной высоты текста,
+   и нижний валик уезжает вниз вместе с ней */
+.razvernut {
+  display: block; margin: 0 auto; cursor: pointer; background: none; border: none;
+  font: bold 1rem Georgia, serif; color: var(--red);
+}
+.razvernut:hover { text-decoration: underline; }
+.razvorot { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 1s ease; }
+.razvorot > div { overflow: hidden; min-height: 0; opacity: 0; transition: opacity 1s ease; }
+.svitok.otkryt .razvorot { grid-template-rows: 1fr; }
+.svitok.otkryt .razvorot > div { opacity: 1; }
+.tekst { padding-top: 12px; border-top: 1px dashed var(--dim); margin-top: 12px; }
+
+/* Картины: при наведении чуть увеличиваются, по нажатию открываются крупно */
+main img { cursor: zoom-in; transition: transform .3s ease; }
+main img:hover { transform: scale(1.04); }
+
+.zoom {
+  position: fixed; inset: 0; z-index: 10; padding: 16px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(30, 18, 8, .92); opacity: 0; visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.zoom.otkryto { opacity: 1; visibility: visible; }
+.zoom img {
+  max-width: 95vw; max-height: 82vh; border: 6px solid var(--wood);
+  transform: scale(.85); transition: transform .3s ease;
+}
+.zoom.otkryto img { transform: scale(1); }
+.zoom p { color: var(--paper); font-style: italic; text-align: center; margin: 10px 0 0; }
+.zoom-zakryt {
+  position: absolute; top: 12px; right: 16px; width: 44px; height: 44px; cursor: pointer;
+  font-size: 1.8rem; line-height: 1; color: var(--paper); background: none;
+  border: 2px solid var(--paper); border-radius: 50%;
+}
+
+/* Разделы на страницах тем появляются, выезжая снизу, когда до них долистали */
+.razdel { transition: opacity .8s ease, transform .8s ease; }
+.razdel.skryt { opacity: 0; transform: translateY(60px); }
+
+/* Паучок на главной: маршрут каждый раз выбирает pauk.js, здесь только внешний вид */
+.pauk-pole { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 5; }
+.pauk { position: absolute; top: 0; left: 0; width: 36px; height: 36px; transform: translate(-60px, -60px); }
+/* Лапки двумя группами шагают по очереди, но только пока паучок бежит */
+.lapki {
+  transform-box: view-box; transform-origin: 20px 22px;
+  animation: shag .15s ease-in-out infinite alternate; animation-play-state: paused;
+}
+.lapki.vtorye { animation-direction: alternate-reverse; }
+.pauk.idyot .lapki { animation-play-state: running; }
+@keyframes shag {
+  from { transform: rotate(-9deg); }
+  to   { transform: rotate(9deg); }
+}
+
+/* Разделы на страницах тем: картина слева, текст справа */
+.razdel {
+  display: flex; gap: 20px; align-items: flex-start; background: var(--paper);
+  border: 1px solid #c9ad78; border-radius: 4px; padding: 18px; margin-top: 20px;
+  box-shadow: inset 0 0 24px rgba(110, 80, 40, .25);
+}
+.razdel figure { flex: none; width: 220px; margin: 0; }
+.razdel figure img { display: block; width: 100%; border: 4px solid var(--wood); }
+.razdel figcaption { font-size: .85rem; color: var(--dim); font-style: italic; margin-top: 4px; }
+.razdel h2 { margin-top: 0; }
+.razdel p { margin: 0 0 .6rem; }
+@media (max-width: 600px) {
+  .razdel { flex-direction: column; }
+  .razdel figure { width: 100%; }
+}
