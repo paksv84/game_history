@@ -109,3 +109,20 @@ main img:hover { transform: scale(1.04); }
   .razdel { flex-direction: column; }
   .razdel figure { width: 100%; }
 }
+
+/* Кнопка языка: в правом верхнем углу страницы */
+.yazyk {
+  position: absolute; top: 10px; right: 16px; z-index: 6; cursor: pointer;
+  padding: 4px 14px; font: bold 1rem Georgia, serif; color: var(--wood);
+  background: var(--paper); border: 2px solid var(--wood); border-radius: 16px;
+}
+.yazyk:hover { color: var(--red); border-color: var(--red); }
+
+/* Строка поиска и выделение найденного */
+.poisk {
+  display: block; width: 100%; max-width: 28rem; margin: 12px 0 0; padding: 8px 12px;
+  font: 1rem Georgia, serif; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--wood); border-radius: 4px;
+}
+.poisk:focus { outline: none; border-color: var(--red); }
+mark { background: #e8b84a; color: var(--ink); padding: 0 2px; border-radius: 2px; }
